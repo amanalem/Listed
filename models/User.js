@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-require('./List')
+const listSchema = require('./List')
 
 const userSchema = new mongoose.Schema({
     name: String,
