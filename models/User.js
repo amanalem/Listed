@@ -1,39 +1,20 @@
 const mongoose = require('mongoose')
 
 
-const subItemSchema = new mongoose.Schema({
-    name: String
-},
-{
-    timestamps: true
-})
-
-
-
-const listItemSchema = new mongoose.Schema({
-    name: String,
-    // item: [subItemSchema]
-},
-{
-    timestamps: true
-})
-
-
-
-const listSchema = new mongoose.Schema({
-    name: String,
-    items: [listItemSchema]
-})
-
+const itemSchema = require('./Item')
 
 const userSchema = new mongoose.Schema({
     name: String,
     email: String,
-    list: [listSchema],
+    password: String,
+    listName: String,
+    items: [itemSchema],
     googleId: String
 },
 {
     timestamps: true
 })
 
-module.exports = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema)
+
+module.exports = User;

@@ -1,10 +1,9 @@
-// const mongoose = require('mongoose')
+const mongoose = require('mongoose')
 
-// const subItemSchema = new mongoose.Schema({
-//     name: String
-// },
-// {
-//     timestamps: true
-// })
+const subItemSchema = new mongoose.Schema({
+    entry: String
+})
 
-// module.exports = mongoose.model('Sub Item', subItemSchema)
+const SubItem = mongoose.model("SubItems", subItemSchema)
+
+module.exports = SubItem;
