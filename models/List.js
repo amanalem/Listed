@@ -1,10 +1,10 @@
-const mongoose = require('mongoose')
+// const mongoose = require('mongoose')
 
-const listItemSchema = require('./ListItem')
+// const listItemSchema = require('./ListItem')
 
-const listSchema = new mongoose.Schema({
-    name: String,
-    items: [listItemSchema]
-})
+// const listSchema = new mongoose.Schema({
+//     name: String,
+//     items: [listItemSchema]
+// })
 
-module.exports = mongoose.model('List', listSchema);
+// module.exports = mongoose.model('List', listSchema);

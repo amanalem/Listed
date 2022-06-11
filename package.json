@@ -2,10 +2,10 @@
   "name": "listed",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "bin/www.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node bin/www.js"
   },
   "repository": {
     "type": "git",
@@ -17,5 +17,19 @@
   "bugs": {
     "url": "https://github.com/amanalem/Listed/issues"
   },
-  "homepage": "https://github.com/amanalem/Listed#readme"
+  "homepage": "https://github.com/amanalem/Listed#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "debug": "^4.3.4",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "http-errors": "^2.0.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.3.6",
+    "morgan": "^1.10.0",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0"
+  }
 }
