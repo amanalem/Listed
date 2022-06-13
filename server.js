@@ -17,9 +17,9 @@ require('./config/database');
 
 
 // require our routes
-const userRoutes = require('./routes/userRoutes')
-const itemRoutes = require('./routes/itemRoutes')
-const subItemRoutes = require('./routes/subItemRoutes');
+// const userRoutes = require('./routes/userRoutes')
+// const itemRoutes = require('./routes/itemRoutes')
+// const subItemRoutes = require('./routes/subItemRoutes');
 
 
 
@@ -48,12 +48,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // mount all routes
-app.get('/', (req, res)=>{
-    res.redirect('/listed')
-})
-app.use('/listed', userRoutes);
-app.use('/listed', itemRoutes);
-app.use('/listed', subItemRoutes);
+// app.get('/', (req, res)=>{
+//     res.redirect('/listed')
+// })
+// app.use('/listed', userRoutes);
+// app.use('/listed', itemRoutes);
+// app.use('/listed', subItemRoutes);
 
 module.exports = app;
 
