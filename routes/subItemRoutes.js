@@ -2,9 +2,9 @@ const express = require('express')
 const router = express.Router()
 const subItemCtrl = require('../controllers/itemController')
 
-router.get('/', subItemCtrl.index)
+router.get('/:userId/big-list/:itemId/lil-list', subItemCtrl.index)
 
-router.get('/:id', subItemCtrl.show)
+// router.get('/:id', subItemCtrl.show)
 
 router.post('/', subItemCtrl.create)
 

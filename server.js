@@ -5,6 +5,9 @@ const session = require('express-session');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 
+const subItemRoutes = require('./routes/subItemRoutes');
+const itemRoutes = require('./routes/itemRoutes')
+
 // load the env vars
 require('dotenv').config();
 
@@ -53,7 +56,8 @@ app.use(passport.session());
 // })
 // app.use('/listed', userRoutes);
 // app.use('/listed', itemRoutes);
-// app.use('/listed', subItemRoutes);
+app.use('/listed', subItemRoutes);
+app.use('/listed', itemRoutes);
 
 module.exports = app;
 

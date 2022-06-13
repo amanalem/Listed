@@ -2,9 +2,9 @@ const express = require('express')
 const router = express.Router()
 const itemCtrl = require('../controllers/itemController')
 
-router.get('/', itemCtrl.index)
+router.get('/:userId/items/:itemId', itemCtrl.index)
 
-router.get('/:id', itemCtrl.show)
+// router.get('/:id', itemCtrl.show)
 
 router.post('/', itemCtrl.create)
 
