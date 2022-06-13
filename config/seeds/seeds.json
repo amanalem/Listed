@@ -1,26 +1,20 @@
 [
     {
-        "entry": "Item 1",
-        "subItems": ["Sub-Item 1", "Sub-Item 2", "Sub-Item 3", "Sub-Item 4", "Sub-Item 5", "Sub-Item 6"]
+        "entry": "Item 0. This is a Big List Item Babyyyy"
     },
     {
-        "entry": "Item 2",
-        "subItems": ["Sub-Item 1", "Sub-Item 2", "Sub-Item 3", "Sub-Item 4", "Sub-Item 5", "Sub-Item 6"]
+        "entry": "Item 1. This is a Big List Item Babyyyy"
     },
     {
-        "entry": "Item 3",
-        "subItems": ["Sub-Item 1", "Sub-Item 2", "Sub-Item 3", "Sub-Item 4", "Sub-Item 5", "Sub-Item 6"]
+        "entry": "Item 2. This is a Big List Item Babyyyy"
     },
     {
-        "entry": "Item 4",
-        "subItems": ["Sub-Item 1", "Sub-Item 2", "Sub-Item 3", "Sub-Item 4", "Sub-Item 5", "Sub-Item 6"]
+        "entry": "Item 3. This is a Big List Item Babyyyy"
     },
     {
-        "entry": "Item 5",
-        "subItems": ["Sub-Item 1", "Sub-Item 2", "Sub-Item 3", "Sub-Item 4", "Sub-Item 5", "Sub-Item 6"]
+        "entry": "Item 4. This is a Big List Item Babyyyy"
     },
     {
-        "entry": "Item 6",
-        "subItems": ["Sub-Item 1", "Sub-Item 2", "Sub-Item 3", "Sub-Item 4", "Sub-Item 5", "Sub-Item 6"]
+        "entry": "Item 5. This is a Big List Item Babyyyy"
     } 
-]
+] 
