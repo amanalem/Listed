@@ -14,10 +14,11 @@ let index = (req, res)=>{
                 res.status(400).res.json(er)
                 return
             }
-            res.render('../views/subItems/index.ejs', {item})
+            res.render('../views/subItems/index.ejs', {user, item})
         })
     })
 }
+
 
 let create = (req, res)=>{
     // creates a new subitem
@@ -33,31 +34,15 @@ let create = (req, res)=>{
                 return
             }
             item.subItems.push(req.body)
-            user.save()
-        })
-    })
-}
-let destroy = (req, res)=>{
-    // deletes subItem
-    console.log('Destroy subItem Function ran')
-    User.findById(req.params.userId, (err, user)=>{
-        if(err){
-            res.status(400).res.json(err)
-            return
-        }
-        user.items.findById(req.params.itemId, (er, item)=>{
-            if(er){
-                res.status(400).res.json(er)
-                return
-            }
-            item.subItems.id(req.params.subItemId).remove()
-            user.save(()=>{
-                res.redirect(`/listed/${req.params.userId}/items/${req.params.itemId}/subitems`)
+            .then(()=>{
+                item.save(()=>{
+                    res.redirect(`/listed/${req.params.userId}/items`)
+                })
             })
-            // should this be item.save()?
         })
     })
 }
+
 
 let update = (req, res)=>{
     // Updates subItem
@@ -85,6 +70,30 @@ let update = (req, res)=>{
     })
 }
 
+
+let destroy = (req, res)=>{
+    // deletes subItem
+    console.log('Destroy subItem Function ran')
+    User.findById(req.params.userId, (err, user)=>{
+        if(err){
+            res.status(400).res.json(err)
+            return
+        }
+        user.items.findById(req.params.itemId, (er, item)=>{
+            if(er){
+                res.status(400).res.json(er)
+                return
+            }
+            item.subItems.id(req.params.subItemId).remove()
+            .then(()=>{
+                item.save(()=>{
+                    res.redirect(`/listed/${req.params.userId}/items/${req.params.itemId}/subitems`)
+                })
+            })
+            // should this be item.save()?
+        })
+    })
+}
 
 
 

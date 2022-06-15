@@ -1,12 +1,5 @@
 const User = require('../models/User')
 
-let create = (req, res)=>{}
-
-let update = (req, res)=>{}
-
-// let show = (req, res)=>{
-
-// }
 
 let index = (req, res)=>{
     // Shows all the items subItems
@@ -15,12 +8,32 @@ let index = (req, res)=>{
             res.status(400).res.json(err)
             return
         }
-        user.items.find({}, (er, allItems)=>{
-            if (er){
+        res.render('../views/items/index.ejs', {user})
+    })
+}
+
+let create = (req, res)=>{
+    User.findById(req.params.userId, (err, user)=>{
+        if(err){
+            res.status(400).res.json(err)
+        }
+        res.render('../views/bigList.ejs')
+    })
+}
+
+let update = (req, res)=>{
+    User.findById(req.params.userId, (err, user)=>{
+        if(err){
+            res.status(400).res.json(err)
+        }
+        user.items.findByIdAndUpdate(req.params.itemId, req.body, {new: true}, (er, item)=>{
+            if(er){
                 res.status(400).res.json(er)
                 return
             }
-            res.render('../views/items/index.ejs', allItems)
+            item.save(()=>{
+                res.redirect(`/listed/${req.params.userId}/items/${req.params.itemId}`)
+            })
         })
     })
 }

@@ -2,14 +2,17 @@ const express = require('express')
 const router = express.Router()
 const itemCtrl = require('../controllers/itemController')
 
-router.get('/:userId/items/:itemId', itemCtrl.index)
+router.get('/:userId/items', itemCtrl.index)
+// action="/listed/<%= user._id %>/items"
 
-// router.get('/:id', itemCtrl.show)
+router.post('/:userId/items', itemCtrl.create)
+// action="/listed/<%= user._id %>/items"
 
-router.post('/', itemCtrl.create)
+router.patch('/:userId/items/:itemId', itemCtrl.update)
+// action="/listed/<%= user._id %>/items/<%= allItems._id"
 
-router.patch('/:id', itemCtrl.update)
+router.delete('/:userId/items/:itemId', itemCtrl.destroy)
+// action="/listed/<%= user._id %>/items/<%= allItems._id"
 
-router.delete('/:id', itemCtrl.destroy)
 
 module.exports = router;
