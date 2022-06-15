@@ -10,9 +10,9 @@
     <h1>Item Details</h1>
 
     <ul>
-        <% allItems.forEach((item)=>{ %>
+        <% item.subItems.forEach((subItem)=>{ %>
             <li>
-                
+                <h3><%= subItem %></h3>
             </li>
         <% }) %>
     </ul>

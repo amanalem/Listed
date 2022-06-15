@@ -2,14 +2,14 @@ const express = require('express')
 const router = express.Router()
 const subItemCtrl = require('../controllers/itemController')
 
-router.get('/:userId/big-list/:itemId/lil-list', subItemCtrl.index)
+router.get('/:userId/items/:itemId/subitems', subItemCtrl.index)
 
-// router.get('/:id', subItemCtrl.show)
+router.post('/:userId/items/:itemId/subitems', subItemCtrl.create)
 
-router.post('/', subItemCtrl.create)
+router.delete('/:UserId/items/:itemId/subitems/:subItemId', subItemCtrl.destroy)
 
-router.patch('/:id', subItemCtrl.update)
+router.patch('/:UserId/items/:itemId/subitems/:subItemId', subItemCtrl.update)
 
-router.delete('/:id', subItemCtrl.destroy)
+
 
 module.exports = router;
