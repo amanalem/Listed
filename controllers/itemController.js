@@ -20,7 +20,7 @@ let show = (req, res)=>{
             res.status(400).res.json(err)
             return
         }
-        res.render('../views/')
+        res.render('../views/items/new.ejs', {user})
     })
 
 }
@@ -30,7 +30,10 @@ let create = (req, res)=>{
         if(err){
             res.status(400).res.json(err)
         }
-        res.render('../views/bigList/index.ejs')
+        user.items.push(req.body)
+        user.save(()=>{
+            res.redirect(`/listed/${user._id}/items`)
+        })
     })
 }
 

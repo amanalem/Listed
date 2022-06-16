@@ -8,7 +8,10 @@
 </head>
 <body>
     <h1><%= user.bigListName %></h1>
-    <h2>Nowish...</h2>
+    <form action="/listed/<%= user._id %>/items/new">
+        <input type="submit" value="NEW ITEM">
+    </form>
+    <h2>A). Nowish...</h2>
     <ul>
         <% user.items.forEach((item)=>{ %>
             <% if(item.priority[0].level == "A"){ %>
@@ -18,7 +21,7 @@
             <% } %>
         <% }) %>
     </ul>
-    <h2>48 Hours...</h2>
+    <h2>B). 48 Hours...</h2>
     <ul>
         <% user.items.forEach((item)=>{ %>
             <% if(item.priority[0].level == "B"){ %>
@@ -28,7 +31,7 @@
             <% } %>
         <% }) %>
     </ul>
-    <h2>2 Weeks...</h2>
+    <h2>C). 2 Weeks...</h2>
     <ul>
         <% user.items.forEach((item)=>{ %>
             <% if(item.priority[0].level == "C"){ %>

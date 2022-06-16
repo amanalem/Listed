@@ -5,6 +5,8 @@ const itemCtrl = require('../controllers/itemController')
 router.get('/:userId/items', itemCtrl.index)
 // action="/listed/<%= user._id %>/items"
 
+router.get('/:userId/items/new', itemCtrl.show)
+
 router.post('/:userId/items', itemCtrl.create)
 // action="/listed/<%= user._id %>/items"
 
