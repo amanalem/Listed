@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 
 const subItemRoutes = require('./routes/subItemRoutes');
 const itemRoutes = require('./routes/itemRoutes')
+const bigListRoutes = require('./routes/bigListRoutes')
 
 // load the env vars
 require('dotenv').config();
@@ -58,6 +59,7 @@ app.use(passport.session());
 // app.use('/listed', itemRoutes);
 app.use('/listed', subItemRoutes);
 app.use('/listed', itemRoutes);
+app.use('/listed', bigListRoutes)
 
 module.exports = app;
 

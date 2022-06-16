@@ -2,7 +2,7 @@ const User = require('../models/User')
 
 
 let index = (req, res)=>{
-    // Shows all the items subItems
+    // Shows all the items in your big list
     User.findById(req.params.userId, (err, user)=>{
         if (err){
             res.status(400).res.json(err)
@@ -12,12 +12,25 @@ let index = (req, res)=>{
     })
 }
 
+
+let show = (req, res)=>{
+    // Shows form to add new item
+    User.findById(req.params.userId, (err, user)=>{
+        if(err){
+            res.status(400).res.json(err)
+            return
+        }
+        res.render('../views/')
+    })
+
+}
+
 let create = (req, res)=>{
     User.findById(req.params.userId, (err, user)=>{
         if(err){
             res.status(400).res.json(err)
         }
-        res.render('../views/bigList.ejs')
+        res.render('../views/bigList/index.ejs')
     })
 }
 
@@ -43,7 +56,7 @@ let destroy = (req, res)=>{}
 module.exports = {
     create,
     update,
-    // show,
+    show,
     index,
     destroy
 }
