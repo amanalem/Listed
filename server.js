@@ -5,6 +5,8 @@ const session = require('express-session');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 
+
+const indexRoutes = require('./routes/index')
 const subItemRoutes = require('./routes/subItemRoutes');
 const itemRoutes = require('./routes/itemRoutes')
 const bigListRoutes = require('./routes/bigListRoutes')
@@ -52,14 +54,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // mount all routes
-// app.get('/', (req, res)=>{
-//     res.redirect('/listed')
-// })
-// app.use('/listed', userRoutes);
-// app.use('/listed', itemRoutes);
+app.use('/', indexRoutes);
 app.use('/listed', subItemRoutes);
 app.use('/listed', itemRoutes);
-app.use('/listed', bigListRoutes)
+app.use('/listed', bigListRoutes);
 
 module.exports = app;
 
