@@ -14,7 +14,7 @@ User.deleteMany({})
 })
 .then((user)=>{
     seeds.forEach((seed, i)=>{
-        user.items.push({entry: seed.entry})
+        user.items.push({entry: seed.entry, priority: seed.priority})
     })
     return user.save()
 })
