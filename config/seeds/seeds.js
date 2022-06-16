@@ -5,12 +5,12 @@ const User = require('../../models/User');
 
 
 const seeds = require('./seeds.json')
-const subSeeds = require('./subSeeds.json')
+
 
 
 User.deleteMany({})
 .then(()=>{
-    return User.create({name: "Aman Alem", password:"password", email: "alem.aman@gmail.com", listName: "Aman's Big List"})
+    return User.create({firstName: "Aman", lastName: "Alem", password:"password", email: "alem.aman@gmail.com", bigListName: "Aman's Big List"})
 })
 .then((user)=>{
     seeds.forEach((seed, i)=>{
@@ -18,12 +18,7 @@ User.deleteMany({})
     })
     return user.save()
 })
-// .then((user)=>{
-//     user.items.forEach((si)=>{
-//         si.subItems.push({entry: "entry1"})
-//     })
-//     return user.save()
-// })
+
 .then((user)=>{
     for (i = 0; i < 6; i++) {
         user.items.forEach((item)=>{
