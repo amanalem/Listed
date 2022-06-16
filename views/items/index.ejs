@@ -8,12 +8,36 @@
 </head>
 <body>
     <h1><%= user.bigListName %></h1>
+    <h2>Nowish...</h2>
     <ul>
         <% user.items.forEach((item)=>{ %>
-            <li>
-                <h3><%= item.entry %></h3>
-            </li>
+            <% if(item.priority[0].level == "A"){ %>
+                <li>
+                    <h3><%= item.entry %></h3>
+                </li>
+            <% } %>
         <% }) %>
     </ul>
+    <h2>48 Hours...</h2>
+    <ul>
+        <% user.items.forEach((item)=>{ %>
+            <% if(item.priority[0].level == "B"){ %>
+                <li>
+                    <h3><%= item.entry %></h3>
+                </li>
+            <% } %>
+        <% }) %>
+    </ul>
+    <h2>2 Weeks...</h2>
+    <ul>
+        <% user.items.forEach((item)=>{ %>
+            <% if(item.priority[0].level == "C"){ %>
+                <li>
+                    <h3><%= item.entry %></h3>
+                </li>
+            <% } %>
+        <% }) %>
+    </ul>
+
 </body>
 </html>
