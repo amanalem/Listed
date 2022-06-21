@@ -11,11 +11,11 @@ let index = (req, res)=>{
         }
         user.items.find({}, (er, i)=>{
             i.findById(req.params.itemId, (er, item)=>{
-            if (er){
-                res.status(400).res.json(er)
-                return
-            }
-            res.render('../views/subItems/index.ejs', {user, item})
+                if (er){
+                    res.status(400).res.json(er)
+                    return
+                }
+                res.render('../views/subItems/index.ejs', {user, item})
             })
         })
     })

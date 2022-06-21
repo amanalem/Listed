@@ -6,6 +6,11 @@
 ## Repo
 * https://github.com/amanalem/Listed
 
+## Technologies Used
+* express
+* mongoose
+
+
 
 ### User stories
 * As a user, I can create an account.
