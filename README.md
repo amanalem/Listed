@@ -8,7 +8,9 @@
 
 ## Technologies Used
 * express
-* mongoose
+* mongoDB
+* compass
+* ejs
 
 
 
