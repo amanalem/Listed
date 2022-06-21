@@ -7,7 +7,7 @@
     <title>Item Details</title>
 </head>
 <body>
-    <h1>Item Details</h1>
+    <h1><%= item.entry %>></h1>
 
     <ul>
         <% item.subItems.forEach((subItem)=>{ %>
@@ -16,6 +16,10 @@
             </li>
         <% }) %>
     </ul>
-    <form action="/listed/<%= user._id %>/items/<%= item._id %>"
+    <form action="/listed/<%= user._id %>/items/<%= item._id %>" method="POST">
+        <label for="entry">New Sub-Item:</label>
+        <input type="text" name="entry" size="75">
+        <input type="submit" value="Add">
+    </form>
 </body>
 </html>

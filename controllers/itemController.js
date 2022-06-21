@@ -30,7 +30,14 @@ let create = (req, res)=>{
         if(err){
             res.status(400).res.json(err)
         }
+
+        req.body.Priority = req.body.ogPriority;
         user.items.push(req.body)
+        // .then(()=>{
+        //     let l = ((user.items.length) - 1);
+        //     return user.items[l].priority = user.items[l].ogPriority;
+        // })
+        console.log(req.body);
         user.save(()=>{
             res.redirect(`/listed/${user._id}/items`)
         })

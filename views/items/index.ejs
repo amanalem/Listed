@@ -14,9 +14,12 @@
     <h2>A). Nowish...</h2>
     <ul>
         <% user.items.forEach((item)=>{ %>
-            <% if(item.priority[0].level == "A"){ %>
+            <% if(item.ogPriority == "A"){ %>
                 <li>
                     <h3><%= item.entry %></h3>
+                    <form action="/listed/<%= user._id %>/items/<%= item._id %>/subitems" method="GET">
+                        <input type="submit" value="Details">
+                    </form>
                 </li>
             <% } %>
         <% }) %>
@@ -24,7 +27,7 @@
     <h2>B). 48 Hours...</h2>
     <ul>
         <% user.items.forEach((item)=>{ %>
-            <% if(item.priority[0].level == "B"){ %>
+            <% if(item.ogPriority == "B"){ %>
                 <li>
                     <h3><%= item.entry %></h3>
                 </li>
@@ -34,7 +37,7 @@
     <h2>C). 2 Weeks...</h2>
     <ul>
         <% user.items.forEach((item)=>{ %>
-            <% if(item.priority[0].level == "C"){ %>
+            <% if(item.ogPriority == "C"){ %>
                 <li>
                     <h3><%= item.entry %></h3>
                 </li>

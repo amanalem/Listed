@@ -9,12 +9,14 @@ let index = (req, res)=>{
             res.status(400).res.json(err)
             return
         }
-        user.items.findById(req.params.itemId, (er, item)=>{
+        user.items.find({}, (er, i)=>{
+            i.findById(req.params.itemId, (er, item)=>{
             if (er){
                 res.status(400).res.json(er)
                 return
             }
             res.render('../views/subItems/index.ejs', {user, item})
+            })
         })
     })
 }

@@ -2,18 +2,17 @@ const User = require('../models/User')
 
 let create = (req, res)=>{}
 
-let update = (req, res)=>{}
+let index = (req, res)=>{
+    User.find({}, (err, users)=>{
+        if 
+    })
+}
 
-let show = (req, res)=>{}
-
-let index = (req, res)=>{}
-
-let destroy = (req, res)=>{}
 
 module.exports = {
     create,
-    update,
-    show,
-    index,
-    destroy
+
+
+    index
+
 }
