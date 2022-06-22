@@ -24,6 +24,4 @@ const itemSchema = new mongoose.Schema({
 
 
 
-
-
 module.exports = itemSchema;

@@ -1,16 +1,50 @@
 const User = require('../models/User')
 
-
 let index = (req, res)=>{
+    console.log("Home Route");
     // Shows all the items in your big list
     User.findById(req.params.userId, (err, user)=>{
         if (err){
             res.status(400).res.json(err)
             return
         }
-        res.render('../views/items/index.ejs', {user})
+        console.log("about to render");
+        res.render('items/index.ejs', {user})
     })
 }
+
+// let showSubItems = (req, res)=>{
+//     console.log('subItem indexing function');
+//     User.findById(req.params.userId, (err, user)=>{
+//         if(err){
+//             res.status(400).res.json(err)
+//             return
+//         }
+//         user.items.findOne({_id: req.params.itemId}, (er, item)=>{
+//             console.log('found item');
+//             if(er){
+//                 res.status(400).res.json(er)
+//                 return
+//             }
+//             res.render('subItems/index.ejs', {user, item})
+//         })
+//     })
+// }
+
+let showSubItems = (req, res)=>{
+    console.log(('subItem indexing function'));
+    User.findById(req.params.userId, (err, user)=>{
+        if(err){
+            res.status(400).res.json(err)
+            return
+        }
+        console.log('user found');
+        let item = user.items.id(req.params.itemId);
+        res.render('subItems/index.ejs', {item})
+        
+    });
+}
+
 
 
 let show = (req, res)=>{
@@ -20,7 +54,7 @@ let show = (req, res)=>{
             res.status(400).res.json(err)
             return
         }
-        res.render('../views/items/new.ejs', {user})
+        res.render('items/new.ejs', {user})
     })
 
 }
@@ -61,12 +95,46 @@ let update = (req, res)=>{
     })
 }
 
-let destroy = (req, res)=>{}
+// let destroy = (req, res)=>{
+//     User.findById(req.params.userId, (err, user)=>{
+//         if(err){
+//             res.status(400).res.json(err)
+//             return
+//         }
+//         user.items.findOneAndDelete(req.params.itemId)
+//         .then(()=>{
+//             user.save((er)=>{
+//                 res.redirect(`/listed/${req.params.userId}/items`)
+//             })
+//         })
+        
+//     })
+// }
+
+let destroy = (req, res)=>{
+    User.findByIdAndUpdate(req.params.userId, {$pull: {items: {_id: req.params.itemId}}}, {new: true}, (err, user)=>{
+        console.log(err);
+        console.log("We're in the deletes");
+        res.redirect(`/listed/${req.params.userId}/items`)
+    })
+}
+
+// let destroy = (req, res)=>{
+//     User.findById(req.params.userId, (err, user)=>{
+//         if(err){
+//             res.status(400).res.json(err)
+//             return
+//         }
+//         user.items.findOneAndDelete(req.params.)
+        
+//     })
+// }
 
 module.exports = {
     create,
     update,
     show,
+    showSubItems,
     index,
     destroy
 }

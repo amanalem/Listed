@@ -4,12 +4,20 @@ const logger = require('morgan');
 const session = require('express-session');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
+const methodOverride = require('method-override')
 
+
+// const cssDirectoryPath = path.join(__dirname, './public/css');
+// const scriptDirectoryPath = path.join(__dirname, './public/scripts');
+// const cssDirectory = express.static(cssDirectoryPath);
+// const scriptDirectory = express.static(scriptDirectoryPath);
 
 const indexRoutes = require('./routes/index')
 const subItemRoutes = require('./routes/subItemRoutes');
 const itemRoutes = require('./routes/itemRoutes')
 const bigListRoutes = require('./routes/bigListRoutes')
+
+
 
 // load the env vars
 require('dotenv').config();
@@ -38,6 +46,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(methodOverride("_method"));
+// app.use('/css/', cssDirectory)
+// app.use('/scripts/', scriptDirectory)
 
 app.use(session({
   secret: "BIGSecret",
