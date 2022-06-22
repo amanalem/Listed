@@ -42,7 +42,7 @@
                 <% if(item.ogPriority == "B"){ %>
                     <li>
                         <h3><%= item.entry %></h3>
-                        <form action="/listed/<%= user._id %>/items/<%= item._id %>/subitems" method="GET">
+                        <form action="/listed/<%= user._id %>/<%= item._id %>/subitems" method="GET">
                             <input type="submit" value="Details">
                         </form>
                         <form action="/listed/<%= user._id %>/items/<%= item._id %>?_method=DELETE" method="POST">
@@ -60,7 +60,7 @@
                 <% if(item.ogPriority == "C"){ %>
                     <li>
                         <h3><%= item.entry %></h3>
-                        <form action="/listed/<%= user._id %>/items/<%= item._id %>/subitems" method="GET">
+                        <form action="/listed/<%= user._id %>/<%= item._id %>/subitems" method="GET">
                             <input type="submit" value="Details">
                         </form>
                         <form action="/listed/<%= user._id %>/items/<%= item._id %>?_method=DELETE" method="POST">
