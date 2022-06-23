@@ -40,7 +40,7 @@ let showSubItems = (req, res)=>{
         }
         console.log('user found');
         let item = user.items.id(req.params.itemId);
-        res.render('subItems/index.ejs', {item})
+        res.render('subItems/index.ejs', {user, item})
         
     });
 }
