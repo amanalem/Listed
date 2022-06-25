@@ -13,11 +13,18 @@
         <% item.subItems.forEach((subItem)=>{ %>
             <li>
                 <h3><%= subItem.entry %></h3>
-                <form method="POST" action="/listed/<%= user._id %>/<%= item._id %>/<%= subItem._id %>?_method=DELETE">
+                <form method="POST" action="/listed/biglist/<%= item._id %>/sublist/ <%= subItem._id %>?_method=DELETE">
                     <input type="submit" value="Delete">
                 </form>
             </li>
         <% }) %>
+        <li>
+            <form method="POST" action="/listed/biglist/<%= item._id %>/sublist">
+                <label for="entry">New SubItem</label>
+                <input type="text" name="entry" size="50">
+                <input type="submit" value="Add">
+            </form>
+        </li>
     </ul>
 </body>
 </html>
