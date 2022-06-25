@@ -5,7 +5,6 @@ const User = require('../models/User')
 
 const index = (req, res, next) => {
     console.log('SubList index function runs')
-    console.log(req.query)
 
     let modelQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
 
@@ -30,7 +29,6 @@ const index = (req, res, next) => {
 
 const create = (req, res, next) => {
     console.log('SubList create subitem function runs')
-    console.log(req.query)
 
     let modelQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
 
@@ -51,7 +49,6 @@ const create = (req, res, next) => {
 
 const destroy = (req, res, next) => {
     console.log('Delete BigList item function runs')
-    console.log(req.query)
 
 
     let modelQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
@@ -85,9 +82,32 @@ const destroy = (req, res, next) => {
 }
 
 
+const edit = (req, res, next) => {
+    console.log('get form to Edit sublist item function runs')
+
+    let modelQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
+
+    let sortKey = req.query.sort || 'name';
+
+    User.find(modelQuery)
+    .sort(sortKey).exec((err, users) => {
+        if (err) return next(err)
+        let item = req.user.items.id(req.params.item)
+        let subItems = item.subItems
+        res.render('subList/index', {
+            users, 
+            user: req.user,
+            name: req.query.name,
+            item,
+            subItems,
+            sortKey
+        })
+    })
+}
 
 module.exports = {
     index,
     create,
-    delete: destroy
+    delete: destroy,
+    edit
 }
