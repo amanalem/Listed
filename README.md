@@ -7,6 +7,7 @@
 * https://github.com/amanalem/Listed
 
 ## Heroku Deployment
+* https://listed.herokuapp.com/listed
 
 ## Technologies Used
 * express
