@@ -15,12 +15,14 @@ const index = (req, res, next) => {
         if (err) return next(err)
         let item = req.user.items.id(req.params.item)
         let subItems = item.subItems
+        let subItem = subItems.id(req.params.subItem)
         res.render('subList/index', {
             users, 
             user: req.user,
             name: req.query.name,
             item,
             subItems,
+            subItem,
             sortKey
         })
     })
