@@ -2,7 +2,7 @@
 
 const router = require('express').Router()
 const subListCtrl = require('../controllers/subList')
-const { route } = require('./bigList')
+
 
 // index subList items
 router.get('/:item/sublist', isLoggedIn, subListCtrl.index)

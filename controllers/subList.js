@@ -55,20 +55,57 @@ const destroy = (req, res, next) => {
     console.log('Delete BigList item function runs')
     console.log(req.query)
 
+
     let modelQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
 
     let sortKey = req.query.sort || 'name';
 
-    User.findOneAndUpdate(modelQuery, {$pull: {items: {_id: req.params.item}}})
+    console.log(modelQuery);
+
+    User.find(modelQuery)
     .sort(sortKey).exec((err, users) => {
         if (err) return next(err)
         let user = req.user
+        let item = user.items.id(req.params.item)
+        let subItems = item.subItems
+        let subItem = subItems.id(req.params.subItem)
+        subItems.splice(subItems.indexOf(subItem), 1)
         user.save((er) => {
             if (er) return next(er)
-            res.redirect(`/listed/biglist`)
+            res.render('subList/index', {
+                users,
+                user,
+                item,
+                name: req.query.name,
+                sortKey
+            })
         })
         
+
+        // let subItems = item.subItems
+        // let subItem = subItems.id(req.params.subItem)
+
+        // let subIndex = subItems.indedOf(subItem)
+
+        // subItems.splice(subIndex, 1)
+        // user.save((er) => {
+        //     if (er) return next(er)
+        //     res.redirect(`/listed/biglist/${item._id}/sublist`)
+        // })
+
+        
     })
+
+    // User.findOneAndUpdate(modelQuery, {$pull: {items: {_id: req.params.item}}})
+    // .sort(sortKey).exec((err, users) => {
+    //     if (err) return next(err)
+    //     let user = req.user
+    //     user.save((er) => {
+    //         if (er) return next(er)
+    //         res.redirect(`/listed/biglist`)
+    //     })
+        
+    // })
 }
 
 
