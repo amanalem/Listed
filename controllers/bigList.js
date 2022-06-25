@@ -22,6 +22,32 @@ const index = (req, res, next) => {
     
 }
 
+const create = async (req, res, next) => {
+    console.log('Create BigList item function runs')
+    console.log(req.query)
+
+    let modelQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
+
+    let sortKey = req.query.sort || 'name';
+
+    User.find(modelQuery)
+    .sort(sortKey).exec((err, users) => {
+        if (err) return next(err)
+        let user = req.user
+        user.items.push(req.body)
+        user.save(er => {
+            if (er) return next(er)
+            res.render('bigList/index', {
+                users, 
+                user,
+                name: req.query.name,
+                sortKey
+            })
+        })
+    })
+    
+}
+
 // Gets form to add to bigList item
 const newItem = (req, res, next) => {
     console.log('Get for for new BigList item function runs')
@@ -57,5 +83,7 @@ const newItem = (req, res, next) => {
 
 module.exports = {
     index,
+    create,
     new: newItem
+
 }

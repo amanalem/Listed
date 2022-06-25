@@ -8,6 +8,7 @@ const bigListCtrl = require('../controllers/bigList')
 router.get('/biglist', isLoggedIn, bigListCtrl.index)
 
 // create new bigList item
+router.post('/biglist', isLoggedIn, bigListCtrl.create)
 
 // new: get form to create new bigList item
 router.get('/biglist/newitem', isLoggedIn, bigListCtrl.new)
