@@ -13,7 +13,7 @@ const methodOverride = require('method-override')
 // const scriptDirectory = express.static(scriptDirectoryPath);
 
 const indexRoutes = require('./routes/index')
-const subItemRoutes = require('./routes/subItemRoutes');
+// const subItemRoutes = require('./routes/subItemRoutes');
 const itemRoutes = require('./routes/itemRoutes')
 
 
@@ -28,6 +28,7 @@ const app = express();
 // connect to the MongoDB with mongoose
 // require('./config/googlePassport');
 require('./config/database');
+require('./config/googlePassport')
 
 
 // require our routes
@@ -69,7 +70,7 @@ app.use(passport.session());
 
 // mount all routes
 app.use('/', indexRoutes);
-app.use('/listed', subItemRoutes);
+// app.use('/listed', subItemRoutes);
 app.use('/listed', itemRoutes);
 
 

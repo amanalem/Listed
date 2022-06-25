@@ -23,7 +23,7 @@ const itemCtrl = require('../controllers/itemController')
 // Fresh Start -------------
 
 // index
-router.get('/', itemCtrl.index)
+router.get('/items', itemCtrl.index)
 
 
 
