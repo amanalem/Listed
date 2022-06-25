@@ -36,8 +36,6 @@ const create = (req, res, next) => {
 
     let sortKey = req.query.sort || 'name';
 
-    // let subItems = req.user.items.id(req.params.item).subItems
-
     User.find(modelQuery)
     .sort(sortKey).exec((err, users) => {
         if (err) return next(err)
@@ -80,32 +78,10 @@ const destroy = (req, res, next) => {
                 sortKey
             })
         })
-        
-
-        // let subItems = item.subItems
-        // let subItem = subItems.id(req.params.subItem)
-
-        // let subIndex = subItems.indedOf(subItem)
-
-        // subItems.splice(subIndex, 1)
-        // user.save((er) => {
-        //     if (er) return next(er)
-        //     res.redirect(`/listed/biglist/${item._id}/sublist`)
-        // })
-
+      
         
     })
 
-    // User.findOneAndUpdate(modelQuery, {$pull: {items: {_id: req.params.item}}})
-    // .sort(sortKey).exec((err, users) => {
-    //     if (err) return next(err)
-    //     let user = req.user
-    //     user.save((er) => {
-    //         if (er) return next(er)
-    //         res.redirect(`/listed/biglist`)
-    //     })
-        
-    // })
 }
 
 
