@@ -7,20 +7,24 @@ router.get('/', (req, res, next)=>{
     res.redirect('/listed')
 })
 
+router.get('/listed', (req, res)=>{
+    res.render('index.ejs')
+})
+
 router.get('/auth/google', passport.authenticate(
     'google',
-    { scope: ['profile', 'email']}
+    { scope: ['profile', 'email'] }
 ))
 
-router.get('/oauth2callback', passport.authenticate(
+router.get('/oauth2/redirect/google', passport.authenticate(
     'google',
     {
-        successRedirect: '/listed',
+        successRedirect: '/listed/biglist',
         failureRedirect: '/listed'
     }
 ))
 
-router.get('/logout', (req, res) => {
+router.get('/listed/logout', (req, res) => {
     req.logOut()
     res.redirect('/listed')
 })

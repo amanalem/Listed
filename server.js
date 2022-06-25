@@ -7,17 +7,6 @@ const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override')
 
 
-// const cssDirectoryPath = path.join(__dirname, './public/css');
-// const scriptDirectoryPath = path.join(__dirname, './public/scripts');
-// const cssDirectory = express.static(cssDirectoryPath);
-// const scriptDirectory = express.static(scriptDirectoryPath);
-
-const indexRoutes = require('./routes/index')
-// const subItemRoutes = require('./routes/subItemRoutes');
-const itemRoutes = require('./routes/itemRoutes')
-
-
-
 
 // load the env vars
 require('dotenv').config();
@@ -36,7 +25,10 @@ require('./config/googlePassport')
 // const itemRoutes = require('./routes/itemRoutes')
 // const subItemRoutes = require('./routes/subItemRoutes');
 
-
+const indexRoutes = require('./routes/index')
+// const subItemRoutes = require('./routes/subItemRoutes');
+// const itemRoutes = require('./routes/itemRoutes')
+const bigListRoutes = require('./routes/bigList')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -45,7 +37,7 @@ app.set('view engine', 'ejs');
 // public folder setup
 // app.set('public', path.join(__dirname, 'public'));
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -70,8 +62,9 @@ app.use(passport.session());
 
 // mount all routes
 app.use('/', indexRoutes);
+app.use('/listed', bigListRoutes);
 // app.use('/listed', subItemRoutes);
-app.use('/listed', itemRoutes);
+// app.use('/listed', itemRoutes);
 
 
 module.exports = app;

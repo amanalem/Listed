@@ -5,7 +5,7 @@ const User = require('../models/User');
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_SECRET,
-    callbackURL: process.env.GOOGLE_CALLBACK
+    callbackURL: process.env.GOOGLE_CALLBACK,
 },
     function(accessToken, refreshToken, profile, cb){
         console.log('user successfully logged in with OAuth');
@@ -27,15 +27,24 @@ passport.use(new GoogleStrategy({
             }
         });
 
+        // User.findOrCreate({
+        //     name: profile.displayName, 
+        //     email: profile.emails[0].value, 
+        //     googleId: profile.id
+        // }, (err, user) => {
+        //     return cb(err, user)
+        // })
+
+
     }
 ));
 
 
-passport.serializeUser((user, done)=>{
+passport.serializeUser((user, done) =>  {
     done(null, user.id)
 })
 
-passport.deserializeUser((id, done)=>{
+passport.deserializeUser((id, done) => {
     User.findById(id, (err, user)=>{
         done(err, user)
     })

@@ -2,15 +2,16 @@ const User = require('../models/User')
 
 let index = (req, res)=>{
     console.log("Home Route");
+    console.log(req.query);
     // Shows all the items in your big list
-    User.findById(req.params.userId, (err, user)=>{
-        if (err){
-            res.status(400).res.json(err)
-            return
-        }
-        console.log("about to render");
-        res.render('items/index.ejs', {user})
-    })
+    // User.findById(req.params.userId, (err, user)=>{
+    //     if (err){
+    //         res.status(400).res.json(err)
+    //         return
+    //     }
+    //     console.log("about to render");
+    //     res.render('items/index.ejs', {user})
+    // })
 }
 
 // let showSubItems = (req, res)=>{
@@ -131,10 +132,5 @@ let destroy = (req, res)=>{
 // }
 
 module.exports = {
-    create,
-    update,
-    show,
-    showSubItems,
-    index,
-    destroy
+    index
 }

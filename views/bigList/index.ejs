@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/items.css">
+    <script defer src="/scripts/items.js"></script>
+    <title>big list</title>
+</head>
+<body>
+    <h1>Big List</h1>
+    <form action="/listed/<%= user._id %>/items/new">
+        <input type="submit" value="NEW ITEM">
+    </form><br>
+    <button id="aShow">Now...</button>
+    <button id="bShow">48 Hours...</button>
+    <button id="cShow">2 Weeks...</button>
+    <button id="abcShow">All...</button>
+    <div id="aBox">
+        <h2>A). Now...</h2>
+        <ul>
+            <% user.items.forEach((item)=>{ %>
+                <% if(item.ogPriority == "A"){ %>
+                    <li>
+                        <h3><%= item.entry %></h3>
+                        <form action="/listed/<%= user._id %>/<%= item._id %>/subitems" method="GET">
+                            <input type="submit" value="Details">
+                        </form>
+                        <form action="/listed/<%= user._id %>/items/<%= item._id %>?_method=DELETE" method="POST">
+                            <input type="submit" value="Delete">
+                        </form>
+                    </li>
+                <% } %>
+            <% }) %>
+        </ul>
+    </div>
+    <div id="bBox">
+        <h2>B). 48 Hours...</h2>
+        <ul>
+            <% user.items.forEach((item)=>{ %>
+                <% if(item.ogPriority == "B"){ %>
+                    <li>
+                        <h3><%= item.entry %></h3>
+                        <form action="/listed/<%= user._id %>/items/<%= item._id %>/subitems" method="GET">
+                            <input type="submit" value="Details">
+                        </form>
+                        <form action="/listed/<%= user._id %>/items/<%= item._id %>?_method=DELETE" method="POST">
+                            <input type="submit" value="Delete">
+                        </form>
+                    </li>
+                <% } %>
+            <% }) %>
+        </ul>
+    </div>
+    <div id="cBox">
+        <h2>C). 2 Weeks...</h2>
+        <ul>
+            <% user.items.forEach((item)=>{ %>
+                <% if(item.ogPriority == "C"){ %>
+                    <li>
+                        <h3><%= item.entry %></h3>
+                        <form action="/listed/<%= user._id %>/items/<%= item._id %>/subitems" method="GET">
+                            <input type="submit" value="Details">
+                        </form>
+                        <form action="/listed/<%= user._id %>/items/<%= item._id %>?_method=DELETE" method="POST">
+                            <input type="submit" value="Delete">
+                        </form>
+                    </li>
+                <% } %>
+            <% }) %>
+        </ul>
+    </div>
+
+</body>
+</html>
