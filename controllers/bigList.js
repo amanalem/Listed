@@ -90,15 +90,15 @@ const destroy = (req, res, next) => {
 
     let sortKey = req.query.sort || 'name';
 
-    User.find(modelQuery)
+    User.findOneAndUpdate(modelQuery, {$pull: {items: {_id: req.params.item}}})
     .sort(sortKey).exec((err, users) => {
         if (err) return next(err)
-        res.render('bigList/new', {
-            users, 
-            user: req.user,
-            name: req.query.name,
-            sortKey
+        let user = req.user
+        user.save((er) => {
+            if (er) return next(er)
+            res.redirect(`/listed/biglist`)
         })
+        
     })
 }
 

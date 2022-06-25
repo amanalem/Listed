@@ -14,7 +14,7 @@ router.post('/biglist', isLoggedIn, bigListCtrl.create)
 router.get('/biglist/newitem', isLoggedIn, bigListCtrl.new)
 
 // delete bigList item
-router.delete('/biglist/:bigIndex', isLoggedIn, bigListCtrl.delete)
+router.delete('/biglist/:item', isLoggedIn, bigListCtrl.delete)
 
 
 
