@@ -13,7 +13,7 @@ router.post('/biglist', isLoggedIn, bigListCtrl.create)
 // new: get form to create new bigList item
 router.get('/biglist/newitem', isLoggedIn, bigListCtrl.new)
 
-// destroy bigList item
+// delete bigList item
 router.delete('/biglist/:bigIndex', isLoggedIn, bigListCtrl.delete)
 
 

@@ -1,3 +1,7 @@
+body {
+    align-content: center;
+}
+
 #aBox #bBox #cBox {
     display: none;
 }
