@@ -1,6 +1,6 @@
 const User = require('../models/User')
 
-
+// Gets bigList
 const index = (req, res, next) => {
     console.log('BigList index function runs')
     console.log(req.query)
@@ -22,7 +22,12 @@ const index = (req, res, next) => {
     
 }
 
+// Gets form to add to bigList item
+const newItem = (req, res) => {
+
+}
 
 module.exports = {
-    index
+    index,
+    new: newItem
 }
