@@ -22,7 +22,8 @@ const index = (req, res, next) => {
     
 }
 
-const create = async (req, res, next) => {
+// creates new biglist item
+const create = (req, res, next) => {
     console.log('Create BigList item function runs')
     console.log(req.query)
 
@@ -81,9 +82,30 @@ const newItem = (req, res, next) => {
 
 // }
 
+const destroy = (req, res, next) => {
+    console.log('Delete BigList item function runs')
+    console.log(req.query)
+
+    let modelQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
+
+    let sortKey = req.query.sort || 'name';
+
+    User.find(modelQuery)
+    .sort(sortKey).exec((err, users) => {
+        if (err) return next(err)
+        res.render('bigList/new', {
+            users, 
+            user: req.user,
+            name: req.query.name,
+            sortKey
+        })
+    })
+}
+
 module.exports = {
     index,
     create,
-    new: newItem
+    new: newItem,
+    delete: destroy
 
 }
