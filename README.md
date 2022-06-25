@@ -24,6 +24,7 @@
 * As a user, I can fully delete items from my checklists.
 * As a user, I can delete full checklists.
 * As a user, I can see a list of all my checklists.
+* As a user, I can edit sublist Items
 
 ### Wireframes
 https://imgur.com/a/NjUg2Wn
@@ -40,11 +41,19 @@ https://imgur.com/a/lyhg97G
 * User can edit sublist items.
 
 ### Stretch Goals
-* User can search for notes or lists by title.
-* User can search for notes or lists by key string.
-* You can create Notebooks and inside of the notebooks you can create notes, or checklists.
+
 * The app looks good on a mobile device.
 * You can attach audio files to your notes.
 * User can ad due dates for checklist items.
+* Big list items will automatically switch priority depending on how long they've been in the list.
 * As a user, I can cross items off of a checklist.
 * User can cross out list items, without deleting them.
+* User can drag and drop items to change their list order.
+
+
+
+## Challenges
+* It took me a very long time to understand CRUD, but I finally understood it at the end. I will continue to work on this app in my free time.
+
+## Successes
+* I'm especially proud of how I set up the big listitem creation to include a hidden priority. All bit items have 2 priorities. One will stay the same so you know what category they started in and eventually the other will change to keep track of how long they have been in the list.
