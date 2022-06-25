@@ -3,52 +3,44 @@ const User = require('../models/User')
 
 
 
-// let index = (req, res)=>{
-//     // Shows all the item's subItems
-//     User.findById(req.params.userId, (err, user)=>{
-//         if (err){
-//             res.status(400).res.json(err)
-//             return
-//         }
-//         user.items.find({id: req.params.itemId}, (e, item)=>{
-//             res.render('../views/subItems/index.ejs', {item})
-//         })
-//         // user.items.find({}, (er, i)=>{
-//         //     i.findById(req.params.itemId, (er, item)=>{
-//         //         if (er){
-//         //             res.status(400).res.json(er)
-//         //             return
-//         //         }
-//         //         res.render('../views/subItems/index.ejs', {item})
-//         //     })
-//         // })
-//     })
-// }
-
 let index = (req, res)=>{
-    console.log('subItem indexing function');
+    console.log(('subItem indexing function'));
     User.findById(req.params.userId, (err, user)=>{
         if(err){
             res.status(400).res.json(err)
             return
         }
-        user.find({items: {_id: req.params.itemId}}, (er, item)=>{
-            if(er){
-                res.status(400).res.json(er)
-                return
-            }
-            item.find({subItems: {_id: req.params.subItemId}}, (e, subItem)=>{
-                if(e){
-                    res.status(400).res.json(e)
-                    return
-                }
-                res.render('subItems/index.ejs', {user, item, subItem})
-            })
-            
-            // 
-        })
-    })
+        console.log('user found');
+        let item = user.items.id(req.params.itemId);
+        res.render('subItems/index.ejs', {user, item})
+        
+    });
 }
+
+// let index = (req, res)=>{
+//     console.log('subItem indexing function');
+//     User.findById(req.params.userId, (err, user)=>{
+//         if(err){
+//             res.status(400).res.json(err)
+//             return
+//         }
+//         user.find({items: {_id: req.params.itemId}}, (er, item)=>{
+//             if(er){
+//                 res.status(400).res.json(er)
+//                 return
+//             }
+//             item.find({subItems: {_id: req.params.subItemId}}, (e, subItem)=>{
+//                 if(e){
+//                     res.status(400).res.json(e)
+//                     return
+//                 }
+//                 res.render('subItems/index.ejs', {user, item, subItem})
+//             })
+            
+//             // 
+//         })
+//     })
+// }
 
 let create = (req, res)=>{
     // creates a new subitem

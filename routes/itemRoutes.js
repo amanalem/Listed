@@ -7,7 +7,7 @@ router.get('/:userId/items', itemCtrl.index)
 
 router.get('/:userId/items/new', itemCtrl.show)
 
-router.get('/:userId/:itemId/subitems', itemCtrl.showSubItems)
+// router.get('/:userId/items/:itemId/subitems', itemCtrl.showSubItems)
 // Shows all item's subItems: action=""
 
 router.post('/:userId/items', itemCtrl.create)

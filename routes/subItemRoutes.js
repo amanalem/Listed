@@ -2,6 +2,10 @@ const express = require('express')
 const router = express.Router()
 const subItemCtrl = require('../controllers/itemController')
 
+// index Subitems
+router.get('/:userId/items/:itemId/subitems', subItemCtrl.index)
+
+
 // router.get('/:userId/:itemId/subitems', subItemCtrl.index)
 // action="/listed/<%= user._id %>/items/<%= allItems._id/subitems"
 
