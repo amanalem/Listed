@@ -4,11 +4,8 @@ const mongoose = require('mongoose')
 const itemSchema = require('./Item')
 
 const userSchema = new mongoose.Schema({
-    username: String,
-    firstName: String,
-    lastName: String,
+    name: String,
     email: String,
-    password: String,
     bigListName: String,
     items: [itemSchema],
     googleId: String
