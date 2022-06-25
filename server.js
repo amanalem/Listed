@@ -15,7 +15,7 @@ const methodOverride = require('method-override')
 const indexRoutes = require('./routes/index')
 const subItemRoutes = require('./routes/subItemRoutes');
 const itemRoutes = require('./routes/itemRoutes')
-const bigListRoutes = require('./routes/bigListRoutes')
+
 
 
 
@@ -71,7 +71,7 @@ app.use(passport.session());
 app.use('/', indexRoutes);
 app.use('/listed', subItemRoutes);
 app.use('/listed', itemRoutes);
-app.use('/listed', bigListRoutes);
+
 
 module.exports = app;
 
