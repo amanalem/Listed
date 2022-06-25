@@ -6,6 +6,8 @@
 ## Repo
 * https://github.com/amanalem/Listed
 
+## Heroku Deployment
+
 ## Technologies Used
 * express
 * mongoDB
@@ -24,6 +26,8 @@
 * As a user, I can see a list of all my checklists.
 
 ### Wireframes
+https://imgur.com/a/NjUg2Wn
+https://imgur.com/a/lyhg97G
 
 
 ### MVP

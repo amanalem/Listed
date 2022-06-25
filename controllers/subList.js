@@ -49,6 +49,46 @@ const create = (req, res, next) => {
     })
 }
 
+
+const update = (req, res, next) => {
+    console.log('Delete BigList item function runs')
+
+
+    let modelQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
+
+    let sortKey = req.query.sort || 'name';
+
+    console.log(modelQuery);
+
+    User.findOneAndUpdate(modelQuery)
+    .sort(sortKey).exec((err, users) => {
+        if (err) return next(err)
+        let user = req.user
+        let item = user.items.id(req.params.item)
+        let subItems = item.subItems
+        // let subItem = subItems.id(req.params.subItem)
+        let subIndex = subItems.indexOf(subItems.id(req.params.subItem))
+        subItems.splice(subIndex, 1, req.body)
+        user.save((er) => {
+            if (er) return next(er)
+            res.render('subList/index', {
+                users,
+                user,
+                item,
+                name: req.query.name,
+                sortKey
+            })
+        })
+        
+        
+    })
+
+}
+
+
+
+
+
 const destroy = (req, res, next) => {
     console.log('Delete BigList item function runs')
 
@@ -113,6 +153,7 @@ const edit = (req, res, next) => {
 module.exports = {
     index,
     create,
+    update,
     delete: destroy,
     edit
 }

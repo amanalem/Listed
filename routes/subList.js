@@ -10,6 +10,9 @@ router.get('/:item/sublist', isLoggedIn, subListCtrl.index)
 // create sublist item
 router.post('/:item/sublist', isLoggedIn, subListCtrl.create)
 
+// update sublist item
+router.put('/:item/sublist/:subItem', isLoggedIn, subListCtrl.update)
+
 // delete sublist item
 router.delete('/:item/sublist/:subItem', isLoggedIn, subListCtrl.delete)
 
