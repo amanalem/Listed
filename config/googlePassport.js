@@ -31,12 +31,12 @@ passport.use(new GoogleStrategy({
 ));
 
 
-passport.serializeUser((student, done)=>{
-    done(null, student.id)
+passport.serializeUser((user, done)=>{
+    done(null, user.id)
 })
 
 passport.deserializeUser((id, done)=>{
-    Student.findById(id, (err, student)=>{
-        done(err, student)
+    User.findById(id, (err, user)=>{
+        done(err, user)
     })
 })
