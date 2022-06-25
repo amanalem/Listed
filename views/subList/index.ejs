@@ -7,14 +7,18 @@
     <title>Sub-Items</title>
 </head>
 <body>
+    <a href="/listed/biglist"><button>Back</button></a>
     <h1><%= item.entry %></h1><br>
     <h2>SubItems</h2>
     <ul>
         <% item.subItems.forEach((subItem)=>{ %>
             <li>
                 <h3><%= subItem.entry %></h3>
-                <form method="POST" action="/listed/biglist/<%= item._id %>/sublist/ <%= subItem._id %>?_method=DELETE">
+                <form method="POST" action="/listed/biglist/<%= item._id %>/sublist/<%= subItem._id %>?_method=DELETE">
                     <input type="submit" value="Delete">
+                </form>
+                <form method="GET" action="/listed/biglist/<%= item._id %>/sublist/ <%= subItem._id %>/edit">
+                    <input type="submit" value="Edit">
                 </form>
             </li>
         <% }) %>

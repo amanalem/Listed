@@ -57,14 +57,15 @@ const destroy = (req, res, next) => {
 
     console.log(modelQuery);
 
-    User.find(modelQuery)
+    User.findOneAndUpdate(modelQuery)
     .sort(sortKey).exec((err, users) => {
         if (err) return next(err)
         let user = req.user
         let item = user.items.id(req.params.item)
         let subItems = item.subItems
-        let subItem = subItems.id(req.params.subItem)
-        subItems.splice(subItems.indexOf(subItem), 1)
+        // let subItem = subItems.id(req.params.subItem)
+        let subIndex = subItems.indexOf(subItems.id(req.params.subItem))
+        subItems.splice(subIndex, 1)
         user.save((er) => {
             if (er) return next(er)
             res.render('subList/index', {
@@ -75,7 +76,7 @@ const destroy = (req, res, next) => {
                 sortKey
             })
         })
-      
+        
         
     })
 
@@ -92,14 +93,16 @@ const edit = (req, res, next) => {
     User.find(modelQuery)
     .sort(sortKey).exec((err, users) => {
         if (err) return next(err)
-        let item = req.user.items.id(req.params.item)
-        let subItems = item.subItems
-        res.render('subList/index', {
+        let user = req.user
+        let item = user.items.id(req.params.item)
+        let subItem = item.subItems.id(req.params.subItem)
+        
+        res.render('subList/edit', {
             users, 
             user: req.user,
             name: req.query.name,
             item,
-            subItems,
+            subItem,
             sortKey
         })
     })

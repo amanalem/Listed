@@ -13,6 +13,9 @@ router.post('/:item/sublist', isLoggedIn, subListCtrl.create)
 // delete sublist item
 router.delete('/:item/sublist/:subItem', isLoggedIn, subListCtrl.delete)
 
+// get form to edit sublist item
+router.get('/:item/sublist/:subItem/edit', isLoggedIn, subListCtrl.edit)
+
 
 
 
