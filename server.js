@@ -29,6 +29,7 @@ const indexRoutes = require('./routes/index')
 // const subItemRoutes = require('./routes/subItemRoutes');
 // const itemRoutes = require('./routes/itemRoutes')
 const bigListRoutes = require('./routes/bigList')
+const subListRoutes = require('./routes/subList')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -63,6 +64,7 @@ app.use(passport.session());
 // mount all routes
 app.use('/', indexRoutes);
 app.use('/listed', bigListRoutes);
+app.use('/listed/biglist', subListRoutes);
 // app.use('/listed', subItemRoutes);
 // app.use('/listed', itemRoutes);
 
