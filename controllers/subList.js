@@ -36,16 +36,17 @@ const create = (req, res, next) => {
 
     let sortKey = req.query.sort || 'name';
 
+    // let subItems = req.user.items.id(req.params.item).subItems
+
     User.find(modelQuery)
     .sort(sortKey).exec((err, users) => {
         if (err) return next(err)
-        let item = req.user.items.id(req.params.item)
-        res.render('subList/index', {
-            users, 
-            user: req.user,
-            name: req.query.name,
-            item,
-            sortKey
+        let user = req.user
+        let item = user.items.id(req.params.item)
+        item.subItems.push(req.body)
+        user.save((er) => {
+            if (er) return next(er)
+            res.redirect(`/listed/biglist/${item._id}/sublist`)
         })
     })
 }
